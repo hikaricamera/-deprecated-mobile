@@ -7,6 +7,7 @@ import WorkshopLensScreen from "./WorkshopScreen/WorkshopLensScreen";
 import {WorkshopTimelineScreen} from "./WorkshopScreen/WorkshopTimelineScreen";
 import {ScreenNames} from "./AppNavigatorConstants";
 import {createTrackedTabNavigator} from "../components/TrackedTabView";
+import React from "react";
 
 const WorkShopNavigator = createTrackedTabNavigator({
     [ScreenNames.WORKSHOP_ROOT.TIMELINE_SCREEN]: {
@@ -33,7 +34,7 @@ const AppCameraNavigator = createStackNavigator({
     },
 
     [ScreenNames.EDIT_ROOT.EDIT_SCREEN]: {
-        screen: EditScreen
+        screen: EditScreen,
     },
 
     [ScreenNames.WORKSHOP]: {
@@ -63,7 +64,7 @@ const AppNavigator = createSwitchNavigator({
     },
 
 }, {
-    initialRouteName: ScreenNames.ONBOARD_SCREEN
+    initialRouteName: ScreenNames.APP
 });
 
 export default createAppContainer(AppNavigator);
