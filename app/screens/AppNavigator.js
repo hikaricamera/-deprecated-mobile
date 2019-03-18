@@ -7,6 +7,7 @@ import WorkshopLensScreen from "./WorkshopScreen/WorkshopLensScreen";
 import {WorkshopTimelineScreen} from "./WorkshopScreen/WorkshopTimelineScreen";
 import {ScreenNames} from "./AppNavigatorConstants";
 import {createTrackedTabNavigator} from "../components/TrackedTabView";
+import React from "react";
 
 const WorkShopNavigator = createTrackedTabNavigator({
     [ScreenNames.WORKSHOP_ROOT.TIMELINE_SCREEN]: {
@@ -24,29 +25,24 @@ const WorkShopNavigator = createTrackedTabNavigator({
 });
 
 const AppCameraNavigator = createStackNavigator({
-
     [ScreenNames.CAMERA_ROOT.CAMERA_SCREEN]: {
         screen: CameraScreen,
         navigationOptions: {
             header: null,
         }
     },
-
     [ScreenNames.EDIT_ROOT.EDIT_SCREEN]: {
-        screen: EditScreen
+        screen: EditScreen,
     },
-
     [ScreenNames.WORKSHOP]: {
         screen: WorkShopNavigator,
         navigationOptions: {
             header: null,
         }
     },
-
     [ScreenNames.SETTING_ROOT.SETTING_SCREEN]: {
         screen: SettingScreen
     },
-
     [ScreenNames.SETTING_ROOT.REFERRAL_CODE_SETTING_SCREEN]: {
         screen: ReferralCodeSettingScreen
     }
@@ -61,7 +57,6 @@ const AppNavigator = createSwitchNavigator({
     [ScreenNames.APP]: {
         screen: AppCameraNavigator
     },
-
 }, {
     initialRouteName: ScreenNames.ONBOARD_SCREEN
 });

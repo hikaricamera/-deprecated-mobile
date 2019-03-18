@@ -2,10 +2,13 @@ const port = 8081;
 const server_addr = `http://localhost:${port}`;
 
 const assets_folder = `${server_addr}/assets`;
-const icons_folder = `${assets_folder}/icon`;
+const icons_folder = `${assets_folder}/icons`;
+const images_folder = `${assets_folder}/images`;
 
-export const RED_LOGO_BGIMAGE = `${assets_folder}/logo_red.png?${Math.random()}`;
-export const BLUE_LOGO_BGIMAGE = `${assets_folder}/logo_blue.png?${Math.random()}`;
+export const RED_LOGO_BGIMAGE = `${images_folder}/logo_red.png?${Math.random()}`;
+export const BLUE_LOGO_BGIMAGE = `${images_folder}/logo_blue.png?${Math.random()}`;
+export const BLUE_BGIMAGE = `${images_folder}/blue.jpg?${Math.random()}`;
+
 
 export const ICONS = {
     HOME_ICON: `${icons_folder}/home.png`,
