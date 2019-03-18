@@ -25,29 +25,24 @@ const WorkShopNavigator = createTrackedTabNavigator({
 });
 
 const AppCameraNavigator = createStackNavigator({
-
     [ScreenNames.CAMERA_ROOT.CAMERA_SCREEN]: {
         screen: CameraScreen,
         navigationOptions: {
             header: null,
         }
     },
-
     [ScreenNames.EDIT_ROOT.EDIT_SCREEN]: {
         screen: EditScreen,
     },
-
     [ScreenNames.WORKSHOP]: {
         screen: WorkShopNavigator,
         navigationOptions: {
             header: null,
         }
     },
-
     [ScreenNames.SETTING_ROOT.SETTING_SCREEN]: {
         screen: SettingScreen
     },
-
     [ScreenNames.SETTING_ROOT.REFERRAL_CODE_SETTING_SCREEN]: {
         screen: ReferralCodeSettingScreen
     }
@@ -62,9 +57,8 @@ const AppNavigator = createSwitchNavigator({
     [ScreenNames.APP]: {
         screen: AppCameraNavigator
     },
-
 }, {
-    initialRouteName: ScreenNames.APP
+    initialRouteName: ScreenNames.ONBOARD_SCREEN
 });
 
 export default createAppContainer(AppNavigator);

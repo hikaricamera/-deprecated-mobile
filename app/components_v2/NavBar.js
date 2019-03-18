@@ -23,7 +23,7 @@ class NavBar extends Component {
             rkType='clear'
             style={styles.menu}
             onPress={this.onNavigationLeftBackButtonPressed}>
-            <RkText rkType='awesome hero'>{FontAwesomeIcons.chevronLeft}</RkText>
+            <RkText rkType='awesome hero'>{FontAwesomeIcons.angleLeft}</RkText>
          </RkButton>
       </View>
    );

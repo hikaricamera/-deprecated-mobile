@@ -1,17 +1,15 @@
 import React, {Component} from "react";
-import {Image, StatusBar, StyleSheet, View} from "react-native";
-import {HorizontalImageSlider, NavBar} from "../../components_v2";
-import {ICONS} from "../../../assets/Path";
+import {Image, ScrollView, StatusBar, StyleSheet, Text, View} from "react-native";
+import {NavBar} from "../../components_v2";
+import {RkButton, RkTabView, RkText} from "react-native-ui-kitten";
+import HorizontalImageSlider from "../../components_v2/HorizontalImageSlider";
+import {BLUE_BGIMAGE} from "../../../assets/Path";
+
 
 export default class EditScreen extends Component {
    // noinspection JSUnusedGlobalSymbols
-   static navigationOptions = ({navigation}) => ({
-      header: () => (
-         <NavBar navigation={navigation}
-                 title='EDIT'
-                 layoutStyle={styles.navBarLayout}
-                 renderCustomRightItem={() => {}}/>
-      ),
+   static navigationOptions = () => ({
+      header: null,
    });
 
    constructor(props) {
@@ -19,73 +17,163 @@ export default class EditScreen extends Component {
       this._imagePath = this.props.navigation.getParam('photoPath');
    }
 
+   _renderNavBarRightItem = () => (
+      <View style={[styles.navBarRightItem]}>
+         <RkButton
+            rkType='clear'
+            style={styles.menu}
+            onPress={this.onNavigationLeftBackButtonPressed}>
+            <RkText rkType='secondary1'>Save</RkText>
+         </RkButton>
+      </View>
+   );
 
-   render() {
-      const data = [
-         {
-            uri: ICONS.SELFIE_WHITE,
-            description: 'A1',
-            cardStyle: styles.firstCard,
-         },
-         {
-            uri: ICONS.SELFIE_WHITE,
-            description: 'A2'
-         },
-         {
-            uri: ICONS.SELFIE_WHITE,
-            description: 'A3'
-         },
-         {
-            uri: ICONS.SELFIE_WHITE,
-            description: 'A4'
-         },
-         {
-            uri: ICONS.SELFIE_WHITE,
-            description: 'A5',
-            cardStyle: styles.lastCard,
-         },
-      ];
+   _renderNavBar = () => (
+      <NavBar navigation={this.props.navigation}
+              title='EDIT'
+              layoutStyle={styles.navBarLayout}
+              renderCustomRightItem={() => this._renderNavBarRightItem()}/>
+   );
 
-      return (
-         <View style={styles.container}>
-            <StatusBar hidden={true}/>
-            <Image
-               source={{uri: this._imagePath}}
-               style={{width: '80%', height: '80%'}}/>
-            <HorizontalImageSlider
-               data={data}
-               style={styles.imageSlider}
-               cardStyle={styles.card}
-               imageStyle={styles.cardImage}
-            />
+   _generateFilterCards = () => [
+      {
+         uri: BLUE_BGIMAGE,
+         description: 'dessert',
+         showInfoText: true
+      },
+      {
+         uri: BLUE_BGIMAGE,
+         description: 'dessert',
+         showInfoText: true
+      },
+      {
+         uri: BLUE_BGIMAGE,
+         description: 'dessert',
+         showInfoText: true
+      },
+      {
+         uri: BLUE_BGIMAGE,
+         description: 'dessert',
+         showInfoText: true
+      },
+      {
+         uri: BLUE_BGIMAGE,
+         description: 'dessert',
+         showInfoText: true
+      },
+      {
+         uri: BLUE_BGIMAGE,
+         description: 'dessert',
+         showInfoText: true
+      },
+   ];
+
+   _renderFilters = () => (
+      <HorizontalImageSlider
+         data={this._generateFilterCards()}
+         style={styles.filterSlider}
+         cardStyle={styles.card}
+         imageStyle={styles.cardImage}/>
+   );
+
+   _renderTabLabel = (selected, title) => (
+      <View style={styles.btmTab}>
+         <RkText rkType='secondary1' style={styles.btmTabInner}>
+            {title}
+         </RkText>
+      </View>
+   );
+
+   _renderBottomTabBar = () => (
+      <RkTabView
+         rkType='light'
+         tabsUnderContent={true}
+         headerContainerStyle={styles.btmTabHeader}>
+         <RkTabView.Tab
+            title={(selected) => this._renderTabLabel(selected, 'Filters')}>
+            {this._renderFilters()}
+         </RkTabView.Tab>
+         <RkTabView.Tab
+            title={(selected) => this._renderTabLabel(selected, 'Neurons')}>
+            {this._renderFilters()}
+         </RkTabView.Tab>
+         <RkTabView.Tab
+            title={(selected) => this._renderTabLabel(selected, 'Customs')}>
+            {this._renderFilters()}
+         </RkTabView.Tab>
+      </RkTabView>
+   );
+
+   render = () => (
+      <View style={styles.container}>
+         <StatusBar hidden={true}/>
+         {this._renderNavBar()}
+         <View style={styles.editedImageContainer}>
+            <Image source={{uri: this._imagePath}} style={styles.editedImage}/>
          </View>
-      );
-   }
+         {this._renderBottomTabBar()}
+      </View>
+   )
 }
 
 const styles = StyleSheet.create({
-   navBarLayout: {
-      paddingTop: 0,
-      borderBottomWidth: 0,
-      height: 36,
-      backgroundColor: '#DADADA',
-   },
-
    container: {
-      paddingTop: 10,
-      backgroundColor: '#DADADA',
-
+      backgroundColor: '#F5F5F5',
       flex: 1,
       flexDirection: 'column',
       alignItems: 'center'
    },
-   imageSlider: {
-      backgroundColor: '#F1F1F1',
+
+   // navigation bar
+   navBarLayout: {
+      alignSelf: 'stretch',
+      // following override default styles
+      paddingTop: 0,
+      borderBottomWidth: 0,
+      backgroundColor: '#F5F5F5',
+   },
+
+   navBarRightItem: {
+      position: 'absolute',
+      right: 17,
+      top: 0,
+      bottom: 0,
+      justifyContent: 'center'
+   },
+
+   // images
+   editedImageContainer: {
+      height: 400,
+      width: 300,
+   },
+
+   editedImage: {
+      width: '100%',
+      height: '100%'
+   },
+
+   // bottom tab bar
+   btmTabHeader: {
+      height: 45,
+   },
+   btmTab: {
+      height: 45,
+      justifyContent: 'center',
+      alignItems: 'center',
+   },
+   btmTabInner: {
+      color: 'white',
+   },
+
+   // filters
+   filterSlider: {
+      backgroundColor: '#EEEEEE',
+      height: 100,
    },
    card: {
       alignSelf: 'center',
-      width: 75,
       borderWidth: 0,
+      maxWidth: 70,
       marginTop: 10,
    },
    firstCard: {
@@ -95,8 +183,7 @@ const styles = StyleSheet.create({
       marginRight: 20,
    },
    cardImage: {
-      width: 70,
-      height: 70,
-      resizeMode: 'contain'
-   }
+      width: 60,
+      height: 60,
+   },
 });

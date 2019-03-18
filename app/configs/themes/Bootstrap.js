@@ -2,12 +2,12 @@ import {RkTheme} from "react-native-ui-kitten";
 import {DefaultTheme} from "./DefaultTheme";
 import {scale} from "./Scale";
 
-export function bootstrap() {
-   RkTheme.setTheme(DefaultTheme);
+/**
+ * This defines a theme-related template for all components.
+ * The rest of all components shouldn't care about anything related to theme
+ * */
 
-   /*
-   */
-
+function registerRkTextTypes() {
    RkTheme.setType('RkText', 'basic', {
       fontFamily: theme => theme.fonts.family.bold,
       backgroundColor: 'transparent',
@@ -134,5 +134,21 @@ export function bootstrap() {
          textAlign: 'center',
       },
    });
+}
 
+function registerRkTabViewTypes() {
+   RkTheme.setType('RkTabView', 'light', {
+      borderColor: '#000000',
+      backgroundColor: '#000000',
+   });
+   RkTheme.setType('RkTabView', 'lightSelected', {
+      borderColor: '#000000',
+      backgroundColor: '#EC407A',
+   });
+}
+
+export function bootstrap() {
+   RkTheme.setTheme(DefaultTheme);
+   registerRkTextTypes();
+   registerRkTabViewTypes();
 }

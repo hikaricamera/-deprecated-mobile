@@ -1,7 +1,10 @@
 import React, {Component} from "react";
-import {ScrollView, View, Text, Image} from "react-native";
-import {RkCard} from "react-native-ui-kitten";
+import {Image, ScrollView, Text, View} from "react-native";
+import {RkCard, RkText} from "react-native-ui-kitten";
 import * as PropTypes from 'prop-types'
+
+// TODO:
+//  Add modal Info text
 
 class HorizontalImageSlider extends Component {
 
@@ -17,6 +20,12 @@ class HorizontalImageSlider extends Component {
          backgroundColor: backgroundColor
       };
    }
+
+   _renderDescription = (elem) => (
+      <RkText rkType='secondary7' style={[this.props.textStyle]}>
+         {elem.description}
+      </RkText>
+   );
 
    _renderCard = (elem, index) => {
       let cardStyle = {
@@ -36,13 +45,8 @@ class HorizontalImageSlider extends Component {
             rkStyle={this.props.cardRkStyle}
             style={[this.props.cardStyle, cardStyle]}>
             <View rkCardContent style={[styles.container]}>
-               <Image source={{uri: elem.uri}}
-                      style={this.props.imageStyle}/>
-               <View>
-                  <Text style={[this.props.textStyle]}>
-                     {elem.description}
-                  </Text>
-               </View>
+               <Image source={{uri: elem.uri}} style={this.props.imageStyle}/>
+               {!!elem.description && this._renderDescription(elem)}
             </View>
          </RkCard>
       );
@@ -74,17 +78,17 @@ const styles = {
 
 HorizontalImageSlider.propTypes = {
    data: PropTypes.arrayOf(PropTypes.shape({
-      uri: PropTypes.string.isRequired,
+      uri: PropTypes.string,
       description: PropTypes.string,
+      onSelected: PropTypes.func,
       cardStyle: PropTypes.object,  // extra styles applied to the card
    })).isRequired,
 
    style: PropTypes.object, // style applied to scroll view
    cardStyle: PropTypes.object, // style applied to each card
    cardRkStyle: PropTypes.string, // rk style applied to each card
-
+   imageStyle: PropTypes.object,  // style applied to each card image
    textStyle: PropTypes.object, // style applied to each card description
-   imageStyle: PropTypes.object,
 };
 
 export default HorizontalImageSlider;
