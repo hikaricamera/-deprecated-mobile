@@ -13,6 +13,11 @@ import * as PhotoUtils from "../../utilities/PhotoUtils";
 import {ScreenNames} from "../AppNavigatorConstants";
 
 class CameraScreenV2 extends Component {
+   // noinspection JSUnusedGlobalSymbols
+   static navigationOptions = () => ({
+      header: null,
+   });
+
    constructor(props) {
       super(props);
       this.camera = React.createRef();
