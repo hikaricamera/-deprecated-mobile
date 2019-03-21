@@ -74,7 +74,7 @@ const styles = StyleSheet.create({
       flexDirection: 'row',
       justifyContent: 'space-between',
       alignItems: 'center',
-      backgroundColor: 'black'
+      backgroundColor: 'rgb(40, 40, 40)'
    },
    captureContainer: {
       width: 100,
