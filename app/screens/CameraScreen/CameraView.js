@@ -111,7 +111,7 @@ const styles = StyleSheet.create({
    buttonImage: {
       width: 30,
       height: 30,
-      opacity: 0.4,
+      opacity: 0.8,
    },
 
    // bottom blurred view
