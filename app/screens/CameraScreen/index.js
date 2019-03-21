@@ -1,4 +1,4 @@
-import CameraScreen from "./CameraScreen";
+import CameraScreenV2 from "./CameraScreenV2";
 
 
-export default CameraScreen;
+export default CameraScreenV2;
