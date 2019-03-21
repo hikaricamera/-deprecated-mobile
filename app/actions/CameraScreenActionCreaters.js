@@ -1,19 +1,12 @@
 
-export const INIT_CBTSCREEN_SCALING_ANIMATION = 'INIT_CBTSCREEN_SCALING_ANIMATION';
-export const COMPLETE_CBTSCREEN_SCALING_ANIMATION = 'COMPLETE_CBTSCREEN_SCALING_ANIMATION';
+export const REPORT_CAMERA_SCREEN_LAYOUT = 'REPORT_CAMERA_SCREEN_LAYOUT';
 
-//
-// camera bottom tools screen actions
-//
-export function initCBTScreenScalingAnimation() {
+export function reportCameraLayout(width, height) {
    return {
-      type: INIT_CBTSCREEN_SCALING_ANIMATION
-   };
-}
-
-export function completeCBTScreenScalingAnimation() {
-   return {
-      type: COMPLETE_CBTSCREEN_SCALING_ANIMATION
+      type: REPORT_CAMERA_SCREEN_LAYOUT,
+      payload: {
+         width: width,
+         height: height
+      },
    }
 }
-

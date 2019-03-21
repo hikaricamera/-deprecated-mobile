@@ -1,6 +1,6 @@
 import {combineReducers} from "redux";
 import {cameraInteractionReducer, cameraSettingsReducer} from "./CameraReducers";
-import {cbtScreenReducer} from "./CameraScreenReducers";
+import {cameraScreenLayoutReducer} from "./CameraScreenReducers";
 
 
 export default combineReducers({
@@ -9,5 +9,5 @@ export default combineReducers({
     cameraInteractionReducer,
 
     // camera screen reducers
-    cbtScreenReducer,
+    cameraScreenLayoutReducer,
 });

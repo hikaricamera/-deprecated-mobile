@@ -26,17 +26,15 @@ export const ICONS = {
     CIRCLE_ICON: `${icons_folder}/circle.png`,
     CIRCLE_FILLED_ICON: `${icons_folder}/circle_filled.png`,
 
-    FLASHOFF_WHITE: `${icons_folder}/flashoff-black-white.png`,
-    FLASH_YELLOW: `${icons_folder}/flash-black-yellow.png`,
-
-    RING_ICON: `${icons_folder}/ring.png?${Math.random()}`,
-
     BACK_FILLED_CHEVRON_ICON: `${icons_folder}/backto.png`,
     FILLED_CHEVRON_ICON: `${icons_folder}/nextpage.png`,
 
-    SELFIE_WHITE: `${icons_folder}/selfie-black-white.png?${Math.random()}`,
-    SELFIE_YELLOW: `${icons_folder}/selfie-black-yellow.png`,
-
     PUZZLE_WHITE: `${icons_folder}/puzzle-black-white.png`,
-    SETTING_WHITE: `${icons_folder}/setting-black-white.png`
+    SETTING_WHITE: `${icons_folder}/setting-black-white.png`,
+
+   FLASH_WHITE: `${icons_folder}/flash-white.png`,
+   FLASH_YELLOW: `${icons_folder}/flash-yellow.png?${Math.random()}`,
+
+   SELFIE_WHITE: `${icons_folder}/selfie-white.png?${Math.random()}`,
+   SELFIE_YELLOW: `${icons_folder}/selfie-yellow.png`,
 };
