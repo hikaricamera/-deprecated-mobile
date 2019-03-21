@@ -1,8 +1,7 @@
 import React, {Component} from "react";
-import {Image, ScrollView, StatusBar, StyleSheet, Text, View} from "react-native";
-import {NavBar} from "../../components_v2";
+import {Image, StatusBar, StyleSheet, View} from "react-native";
+import {HorizontalImageSlider, NavBar} from "../../components_v2";
 import {RkButton, RkTabView, RkText} from "react-native-ui-kitten";
-import HorizontalImageSlider from "../../components_v2/HorizontalImageSlider";
 import {BLUE_BGIMAGE} from "../../../assets/Path";
 
 
@@ -118,7 +117,7 @@ export default class EditScreen extends Component {
 
 const styles = StyleSheet.create({
    container: {
-      backgroundColor: '#F5F5F5',
+      backgroundColor: '#FAFAFA',
       flex: 1,
       flexDirection: 'column',
       alignItems: 'center'
@@ -130,7 +129,7 @@ const styles = StyleSheet.create({
       // following override default styles
       paddingTop: 0,
       borderBottomWidth: 0,
-      backgroundColor: '#F5F5F5',
+      backgroundColor: '#FAFAFA',
    },
 
    navBarRightItem: {
@@ -167,7 +166,7 @@ const styles = StyleSheet.create({
 
    // filters
    filterSlider: {
-      backgroundColor: '#EEEEEE',
+      backgroundColor: '#FAFAFA',
       height: 100,
    },
    card: {

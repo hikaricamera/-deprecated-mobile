@@ -1,21 +1,26 @@
-import * as ObjectUtils from "../utilities/ObjectUtils";
 import {
-   COMPLETE_CBTSCREEN_SCALING_ANIMATION,
-   INIT_CBTSCREEN_SCALING_ANIMATION
+   REPORT_CAMERA_SCREEN_LAYOUT
 } from "../actions/CameraScreenActionCreaters";
 
-const cbtScreenInitialStates = {
-   scalingCompleted: false
+const cameraScreenLayoutInitialStates = {
+   cameraWidth: null,
+   cameraHeight: null,
 };
 
-export function cbtScreenReducer(state = cbtScreenInitialStates, action) {
-   console.debug(`cbtScreenReducer:${action.type}`);
+export function cameraScreenLayoutReducer(state = cameraScreenLayoutInitialStates, action) {
+   console.debug(`cameraScreenLayoutReducer:${action.type}`);
    switch (action.type) {
-      case INIT_CBTSCREEN_SCALING_ANIMATION:
-         return ObjectUtils.updateField(state, 'scalingCompleted', false);
-      case COMPLETE_CBTSCREEN_SCALING_ANIMATION:
-         return ObjectUtils.updateField(state, 'scalingCompleted', true);
+      case REPORT_CAMERA_SCREEN_LAYOUT:
+         return {
+            ...state,
+            cameraWidth: action.payload.width,
+            cameraHeight: action.payload.height
+         };
       default:
          return state;
    }
 }
+
+
+
+

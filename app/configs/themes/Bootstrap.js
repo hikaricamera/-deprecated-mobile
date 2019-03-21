@@ -129,6 +129,7 @@ function registerRkTextTypes() {
       fontFamily: theme => theme.fonts.family.regular,
    });
 
+
    RkTheme.setType('RkText', 'center', {
       text: {
          textAlign: 'center',
