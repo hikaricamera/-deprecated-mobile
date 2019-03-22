@@ -4,7 +4,7 @@ import {Image, Text, View, Animated} from "react-native";
 import {chooseNonNullInOrder} from "../utilities/ObjectUtils";
 import Separator from "./Separator";
 import ReboundFlatList from "./ReboundFlatList";
-import {SCREEN_WDITH} from "../utilities/ScreenUtils";
+import {SCREEN_WDITH} from "../configs/themes/Screen";
 
 const DEFAULT_TITLE_COLOR = 'black';
 const DEFAULT_TITLE_SIZE = 15;
