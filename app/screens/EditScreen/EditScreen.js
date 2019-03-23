@@ -1,6 +1,6 @@
 import React, {Component} from "react";
 import {Image, StatusBar, StyleSheet, View} from "react-native";
-import {HorizontalImageSlider, NavBar} from "../../components_v2";
+import {HorizontalImageSlider, NavBar} from "../../components_v2/core";
 import {RkButton, RkTabView, RkText} from "react-native-ui-kitten";
 import {BLUE_BGIMAGE} from "../../../assets/Path";
 

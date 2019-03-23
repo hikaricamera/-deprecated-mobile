@@ -1,6 +1,6 @@
 import React, {Component} from "react";
 import {StyleSheet, View} from "react-native";
-import {DebouncedButton} from "../../components_v2";
+import {DebouncedButton} from "../../components_v2/core";
 import {FontAwesomeIcons} from "../../../assets/Icons";
 import {RkText} from "react-native-ui-kitten";
 import {capturePictureOn} from "../../actions/CameraActionCreaters";

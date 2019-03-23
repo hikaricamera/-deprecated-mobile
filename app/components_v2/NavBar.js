@@ -1,11 +1,11 @@
-import React, {Component} from 'react';
+import React from 'react';
 import {StyleSheet, View,} from 'react-native';
-import {RkButton, RkStyleSheet, RkText} from 'react-native-ui-kitten';
+import {RkButton, RkComponent, RkStyleSheet, RkText} from 'react-native-ui-kitten';
 import * as Screen from "../configs/themes/Screen";
 import {FontAwesomeIcons} from "../../assets/Icons";
 import * as PropTypes from "prop-types"
 
-class NavBar extends Component {
+class NavBar extends RkComponent {
 
    onNavigationLeftBackButtonPressed = () => {
       this.props.navigation.goBack();
@@ -13,7 +13,7 @@ class NavBar extends Component {
 
    renderNavigationTitleItem = () => (
       <View style={styles.title}>
-         <RkText rkType='header3'>{this.props.title}</RkText>
+         <RkText rkType={this.props.titleRkType}>{this.props.title}</RkText>
       </View>
    );
 
@@ -91,9 +91,15 @@ NavBar.propTypes = {
    layoutStyle: PropTypes.object,
    containerStyle: PropTypes.object,
 
+   titleRkType: PropTypes.string,
+
    renderCustomLeftItem: PropTypes.func,
    renderCustomTitleItem: PropTypes.func,
    renderCustomRightItem: PropTypes.func,
+};
+
+NavBar.defaultProps = {
+   titleRkType: 'header3'
 };
 
 export default NavBar;

@@ -1,6 +1,6 @@
 import React, {Component} from "react";
 import {StyleSheet, View} from "react-native";
-import {DebouncedButton} from "../../components_v2";
+import {DebouncedButton} from "../../components_v2/core";
 import {ICONS} from "../../../assets/Path";
 import {toggleFlashMode, toggleSelfieMode} from "../../actions/CameraActionCreaters";
 import {connect} from "react-redux";

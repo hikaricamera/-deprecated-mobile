@@ -59,7 +59,7 @@ export function loadPhotosSortByCreationDate(numOfPhotos, desc = true) {
  * */
 export function groupPhotosByCreationDate(photos) {
     //sanity check photos
-    if (photos === null || photos === undefined){
+    if (photos === null || photos === undefined) {
         return null;
     }
 
@@ -70,29 +70,41 @@ export function groupPhotosByCreationDate(photos) {
         return [photos];
     }
 
-    let groups = []; // each elem is a list of photos
-    let group = [];  // includes photos created on the same day
+    // each element in groups has shape
+    // {  time
+    //    [list of photos]
+    // }
+    let groups = [];
+    let group = [];  // group of photos created on the same day
 
-    photos.forEach(function (photo) {
-        if (!group.length) {
+    let prevDay = null;
+    photos.forEach((photo) => {
+        const curDateObj = new Date(photo.creationDate);
+        const curDay = dateToString(curDateObj, 'yyyy-MM-dd');
+
+        if (group.length === 0) {
+            // first photo
+            prevDay = curDay;
             group.push(photo);
         } else {
-            const curDateObj = new Date(photo.creationDate);
-            const prevDateObj = new Date(group[group.length-1].creationDate);
-
-            const curDay = dateToString(curDateObj, 'yyyy-MM-dd');
-            const prevDay = dateToString(prevDateObj, 'yyyy-MM-dd');
-
             if (curDay === prevDay) {
                 group.push(photo);
             } else {
-                groups.push(group);
-                group = [];
+                groups.push({
+                    time: prevDay,
+                    photos: group
+                });
+                group = [photo];
+                prevDay = curDay;
             }
         }
     });
+
     if (group.length > 0) {
-        groups.push(group);
+        groups.push({
+            time: prevDay,
+            photos: group
+        })
     }
 
     return groups;

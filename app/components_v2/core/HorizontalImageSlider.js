@@ -1,12 +1,12 @@
-import React, {Component} from "react";
-import {Image, ScrollView, Text, View} from "react-native";
-import {RkCard, RkText} from "react-native-ui-kitten";
+import React from "react";
+import {Image, ScrollView, View} from "react-native";
+import {RkCard, RkComponent, RkText} from "react-native-ui-kitten";
 import * as PropTypes from 'prop-types'
 
 // TODO:
 //  Add modal Info text
 
-class HorizontalImageSlider extends Component {
+class HorizontalImageSlider extends RkComponent {
 
    constructor(props) {
       super(props);

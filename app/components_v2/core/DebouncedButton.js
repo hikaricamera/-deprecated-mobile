@@ -1,12 +1,12 @@
-import React, {Component} from "react";
+import React from "react";
 import {Image, View} from "react-native";
 import * as PropTypes from 'prop-types'
 import {debounce} from "underscore";
-import {RkButton, RkText} from "react-native-ui-kitten";
+import {RkButton, RkComponent, RkText} from "react-native-ui-kitten";
 
 const DEFAULT_DEBOUNCE_WAIT_TIME = 1000;
 
-export default class DebouncedButton extends Component {
+export default class DebouncedButton extends RkComponent {
 
    constructor(props) {
       super(props);
