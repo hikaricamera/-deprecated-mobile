@@ -20,7 +20,7 @@ export default class WorkshopDisplayAllPhotoView extends Component {
       };
 
       return (
-         <View style={styles.container}>
+         <View style={[styles.container, containerStyle]}>
             <StatusBar hidden={true}/>
             <RkGallery items={this._galleryItems} spanCount={4}/>
          </View>

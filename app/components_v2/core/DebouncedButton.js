@@ -4,8 +4,6 @@ import * as PropTypes from 'prop-types'
 import {debounce} from "underscore";
 import {RkButton, RkComponent, RkText} from "react-native-ui-kitten";
 
-const DEFAULT_DEBOUNCE_WAIT_TIME = 1000;
-
 export default class DebouncedButton extends RkComponent {
 
    constructor(props) {
@@ -17,7 +15,7 @@ export default class DebouncedButton extends RkComponent {
       } = this.props;
 
       if (debounced) {
-         this.handlePress = debounce(onPress, DEFAULT_DEBOUNCE_WAIT_TIME, true);
+         this.handlePress = debounce(onPress, this.props.debounceTime, true);
       } else {
          this.handlePress = onPress;
       }
@@ -61,9 +59,10 @@ export default class DebouncedButton extends RkComponent {
 
 DebouncedButton.propTypes = {
    title: PropTypes.string,
+   imageUri: PropTypes.string,
    renderTitle: PropTypes.func,
 
-   imageUri: PropTypes.string,
+   debounceTime: PropTypes.number,
 
    style: PropTypes.object, // applied to the top RkButton container
    imageStyle: PropTypes.object,  // applicable when image is displayed
@@ -77,9 +76,12 @@ DebouncedButton.propTypes = {
 };
 
 DebouncedButton.defaultProps = {
+   debounceTime: 1000,
+
+   textRkType: 'awesome',
+
    hide: false,
    disabled: false,
    debounced: true,
    onPress: () => {},
-   textRkType: 'awesome',
 };

@@ -2,27 +2,11 @@ import {createAppContainer, createStackNavigator, createSwitchNavigator} from "r
 import {OnboardScreen} from "./OnboardScreen";
 import {ReferralCodeSettingScreen, SettingScreen} from "./SettingScreen";
 import EditScreen from "./EditScreen/EditScreen";
-import WorkshopLensScreen from "./WorkshopScreen/WorkshopLensScreen";
-import {WorkshopTimelineScreen} from "./WorkshopScreen/WorkshopTimelineScreen";
 import {ScreenNames} from "./AppNavigatorConstants";
-import {createTrackedTabNavigator} from "../components/TrackedTabView";
 import React from "react";
 import CameraScreenV2 from "./CameraScreen";
+import WorkshopMainView from "./workshop/WorkshopMainView";
 
-const WorkShopNavigator = createTrackedTabNavigator({
-   [ScreenNames.WORKSHOP_ROOT.TIMELINE_SCREEN]: {
-      screen: WorkshopTimelineScreen
-   },
-   [ScreenNames.WORKSHOP_ROOT.LENS_SCREEN]: {
-      screen: WorkshopLensScreen
-   },
-}, {
-   initialRouteName: ScreenNames.WORKSHOP_ROOT.TIMELINE_SCREEN,
-   routeNameToDisplayText: {
-      [ScreenNames.WORKSHOP_ROOT.TIMELINE_SCREEN]: 'Timeline',
-      [ScreenNames.WORKSHOP_ROOT.LENS_SCREEN]: 'Len',
-   },
-});
 
 const AppCameraNavigator = createStackNavigator({
    [ScreenNames.CAMERA_ROOT.CAMERA_SCREEN]: {
@@ -32,10 +16,7 @@ const AppCameraNavigator = createStackNavigator({
       screen: EditScreen,
    },
    [ScreenNames.WORKSHOP]: {
-      screen: WorkShopNavigator,
-      navigationOptions: {
-         header: null,
-      }
+      screen: WorkshopMainView,
    },
    [ScreenNames.SETTING_ROOT.SETTING_SCREEN]: {
       screen: SettingScreen
@@ -54,8 +35,11 @@ const AppNavigator = createSwitchNavigator({
    [ScreenNames.APP]: {
       screen: AppCameraNavigator
    },
+   [ScreenNames.WORKSHOP]: {
+      screen: WorkshopMainView,
+   },
 }, {
-   initialRouteName: ScreenNames.ONBOARD_SCREEN
+   initialRouteName: ScreenNames.WORKSHOP
 });
 
 export default createAppContainer(AppNavigator);

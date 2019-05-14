@@ -12,4 +12,7 @@ export const FontAwesomeIcons = {
    gear: '\uf013',
    bolt: '\uf0e7',
    camera: '\uf030',
+
+   // nav bar
+   bars: '\uf0c9'
 };

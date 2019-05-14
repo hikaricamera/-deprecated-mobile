@@ -1,20 +1,19 @@
 import React, {Component} from "react";
-import {StyleSheet} from "react-native";
+import {StyleSheet, Text, View} from "react-native";
 import * as PhotoUtils from "../../utilities/PhotoUtils";
 import WorkshopPendingView from "./WorkshopPendingView";
 import {DebouncedButton, NavBar} from "../../components_v2/core";
 import {FontAwesomeIcons} from "../../../assets/Icons";
 import {SCREEN_HEIGHT, SCREEN_WDITH} from "../../configs/themes/Screen";
-import WorkshopTimelineView from "./timeline/WorkshopTimelineView";
 import {BLUE_LOGO_BGIMAGE} from "../../../assets/Path";
 import {Parallax} from "../../components_v2/parallax";
-import {DropdownMenuButton} from "../../components_v2/simple-dropdown-menu";
 import WorkshopDisplayAllPhotoView from "./allphotos/WorkshopDisplayAllPhotoView";
 
 const NAV_BAR_HEIGHT = 48;
 const PARALLAX_HEIGHT = 200;
+const PHOTO_BATCH_READ_SIZE = 30;
 
-const PHOTO_BATCH_READ_SIZE = 50;
+const WORKSHOP_SCREEN_BASE_COLOR = 'rgba(31, 31, 31, 0.98)';
 
 class WorkshopMainView extends Component {
 
@@ -52,12 +51,18 @@ class WorkshopMainView extends Component {
                        textRkType='awesome inverseColor h2'/>
    );
 
+
+
    _renderNavBarRightItem = () => (
-      <DropdownMenuButton iconUri={FontAwesomeIcons.bars}
-                          style={styles.barsButton}>
-         <DropdownMenuButton.Option option={"All Photos"}/>
-         <DropdownMenuButton.Option option={"Timeline"}/>
-      </DropdownMenuButton>
+      <View>
+         <DebouncedButton title={FontAwesomeIcons.bars}
+                       style={styles.barsButton}
+                       textRkType='awesome inverseColor h2'
+                       />
+         <Popover isVisible={true} buttonRect={{x: 10, y: 10, width: 100, height: 100}}>
+            <Text>3212312</Text>
+         </Popover>
+      </View>
    );
 
    _renderNavBar = () => (
@@ -70,7 +75,7 @@ class WorkshopMainView extends Component {
               renderCustomRightItem={() => this._renderNavBarRightItem()}/>
    );
 
-   _renderChildren = (props) => (
+   _renderChildren = () => (
       <WorkshopDisplayAllPhotoView items={this._photos}
                                    galleryMinHeight={SCREEN_HEIGHT - PARALLAX_HEIGHT}/>
    );
@@ -97,7 +102,7 @@ const styles = StyleSheet.create({
 
    // nav bar
    navBarLayoutContainer: {
-      backgroundColor: 'rgba(31, 31, 31, 0.98)',
+      backgroundColor: WORKSHOP_SCREEN_BASE_COLOR,
       position: 'absolute',
       top: 0,
       left: 0,
@@ -117,6 +122,8 @@ const styles = StyleSheet.create({
    barsButton: {
       position: 'absolute',
       right: 10,
+   },
+   barsMenuOptions: {
    },
 
 });
